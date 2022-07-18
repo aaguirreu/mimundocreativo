@@ -45,14 +45,14 @@ const Confirm = ({ show = false, email = "", }) => (
       >
         <div className="flex items-center justify-center h-full p-8">
           <div className="overflow-hidden transition-all transform">
-            <h3 className="text-center text-lg font-medium leading-6">
-              <div className="flex flex-col justify-center items-center space-y-4">
-                <MailOpenIcon className="w-12 h-12 shrink-0 text-teal-500" />
+            <h3 className="text-lg font-medium leading-6 text-center">
+              <div className="flex flex-col items-center justify-center space-y-4">
+                <MailOpenIcon className="w-12 h-12 text-teal-500 shrink-0" />
               </div>
-              <p className="text-2xl font-semibold mt-2">Confirm your email</p>
+              <p className="mt-2 text-2xl font-semibold">Confirm your email</p>
             </h3>
 
-            <p className="text-lg text-center mt-4">
+            <p className="mt-4 text-lg text-center">
               We have sed and email to <strong>{email ?? ""}</strong>.
               <br />
               Check your email and click on that confirmation link.
@@ -157,10 +157,10 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full my-8 overflow-hidden text-left transition-all transform bg-neutral shadow-2xl sm:rounded-xl max-w-xl relative">
+            <div className="relative inline-block w-full max-w-xl my-8 overflow-hidden text-left transition-all transform shadow-2xl bg-neutral sm:rounded-xl">
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 shrink-0 p-1 rounded-md hover:bg-gray-100 transition focus:outline-none"
+                className="absolute p-1 transition rounded-md top-2 right-2 shrink-0 hover:bg-gray-100 focus:outline-none"
               >
                 <XIcon className="w-5 h-5" />
               </button>
@@ -178,12 +178,12 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
                   </div>
                   <Dialog.Title
                     as="h3"
-                    className="mt-6 font-bold text-lg sm:text-2xl text-center"
+                    className="mt-6 text-lg font-bold text-center sm:text-2xl text-secondary"
                   >
                     {showSignIn ? "Welcome back!" : "Acceder"}
                   </Dialog.Title>
                   {!showSignIn ? (
-                    <Dialog.Description className="mt-2 text-gray-500 text-base text-center">
+                    <Dialog.Description className="mt-2 text-base text-center text-gray-500">
                       <Formik
                         initialValues={{
                           email: '',
@@ -192,7 +192,7 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
                         validateOnBlur={false}
                         onSubmit={handleOnSubmit}>
                           {({ isSubmitting, isValid }) => (
-                           <Form className="text-left space-y-6">
+                           <Form className="space-y-6 text-left">
                            <div className="space-y-6">
                             <Input
                               name="email"

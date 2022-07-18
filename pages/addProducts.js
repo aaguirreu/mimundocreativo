@@ -8,7 +8,7 @@ const addProducts = () => {
   return (
     <Layout>
       <div className="flex-col max-w-screen-xl mx-auto">
-        <h1 className="justify-center text-3xl font-medium text-gray-200">
+        <h1 className="justify-center text-3xl font-medium text-accent">
           Agregar Producto
         </h1>
         <div className="mt-8">

@@ -111,7 +111,7 @@ const ProductList = ({
               <button
                 type="submit"
                 disabled={disabled || !isValid}
-                className="px-6 py-2 text-white transition rounded-md bg-success focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+                className="px-4 py-3 ml-4 font-extrabold transition rounded-md bg-info hover:bg-opacity-50 hover:bg-success hover:text-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary"
                 >
                 {isSubmitting ? "Submitting..." : buttonText}
               </button>

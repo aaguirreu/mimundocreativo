@@ -10,7 +10,7 @@ const Input = ({ type = '', label = '', className = '', ...props }) => {
   return (
     <div className={classNames(className, 'flex flex-col space-y-1')}>
       {label ? (
-        <label htmlFor="email" className="text-gray-600">
+        <label htmlFor="email" className="text-secondary">
           {label}
         </label>
       ) : null}
@@ -41,7 +41,7 @@ const Input = ({ type = '', label = '', className = '', ...props }) => {
               )}
             />
             {error && type !== 'number' ? (
-              <span className="pr-2 absolute right-0 top-1/2 -translate-y-1/2">
+              <span className="absolute right-0 pr-2 -translate-y-1/2 top-1/2">
                 <ExclamationCircleIcon className="w-6 h-6 text-red-500" />
               </span>
             ) : null}
@@ -50,7 +50,7 @@ const Input = ({ type = '', label = '', className = '', ...props }) => {
       </div>
 
       {error ? (
-        <p name="email" className="text-red-600 text-sm first-letter:uppercase">
+        <p name="email" className="text-sm text-red-600 first-letter:uppercase">
           {error}
         </p>
       ) : null}

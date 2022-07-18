@@ -4,14 +4,14 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import { useRouter } from "next/router";
 
-const ListedProducts = (product = null) => {
+const ListedProducts = (productos = null) => {
   const router = useRouter();
 
   if (router.isFallback) {
     return (
       <svg
         role="status"
-        className="mr-2 w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-success"
+        className="mr-2 text-gray-200 w-14 h-14 animate-spin dark:text-gray-600 fill-success"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -31,47 +31,22 @@ const ListedProducts = (product = null) => {
   return (
     <Layout>
       <div className="max-w-screen-lg mx-auto">
-        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
-          {product?.image ? (
+        <div className="relative mt-6 overflow-hidden bg-gray-400 rounded-lg shadow-md aspect-video">
+          {productos?.image ? (
             <Image
-              src={product.image}
-              alt={product.title}
+              src={productos.image}
+              alt={productos.title}
               layout="fill"
               objectFit="cover"
             />
           ) : null}
         </div>
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
+        <div className="flex flex-col pt-10 space-y-4 sm:flex-row sm:justify-between sm:space-x-4">
           <div>
             <h1 className="text-2xl font-semibold truncate">
-              {product?.title ?? ""}
+              {productos?.title ?? ""}
             </h1>
-            <ol className="inline-flex items-center space-x-1 text-info">
-              <li>
-                <span aria-hidden="true"> ( </span>
-                <span>{product?.status ?? 0} product</span>
-                <span aria-hidden="true"> ) </span>
-                <span aria-hidden="true"> - </span>
-              </li>
-              <li>
-                <span aria-hidden="true"> ( </span>
-                <span>{product?.authenticity ?? 0}% Authentic</span>
-                <span aria-hidden="true"> ) </span>
-                <span aria-hidden="true"> - </span>
-              </li>
-              <li>
-                <span aria-hidden="true"> ( </span>
-                <span>{product?.returnPolicy ?? 0} year return policy</span>
-                <span aria-hidden="true"> ) </span>
-                <span aria-hidden="true"> - </span>
-              </li>
-              <li>
-                <span aria-hidden="true"> ( </span>
-                <span>{product?.warranty ?? 0} year warranty</span>
-                <span aria-hidden="true"> ) </span>
-              </li>
-            </ol>
-            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+            <p className="mt-8 text-lg">{productos?.description ?? ""}</p>
           </div>
         </div>
       </div>
@@ -80,7 +55,7 @@ const ListedProducts = (product = null) => {
 };
 
 export async function getStaticPaths() {
-  const products = await prisma.product.findMany({
+  const products = await prisma.productos.findMany({
     select: { id: true },
   });
 
@@ -93,7 +68,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const product = await prisma.product.findUnique({
+  const product = await prisma.productos.findUnique({
     where: { id: params.id },
   });
 

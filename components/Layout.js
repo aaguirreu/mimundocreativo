@@ -6,6 +6,8 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import SigninPopupModal from "./SigninPopupModal";
 import { Menu, Transition } from "@headlessui/react";
+import SecondaryButton from "@/components/SecondaryButton";
+
 
 import {
   HeartIcon,
@@ -47,7 +49,7 @@ const Layout = ({ children = null }) => {
 
   const user = null;
   const isLoadingUser = false;
-
+  
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
@@ -73,8 +75,9 @@ const Layout = ({ children = null }) => {
                 </a>
               </Link>
               <div className="flex items-center space-x-4">
+              <SecondaryButton text="Tienda" link="/products" />
                 <Link href="/addProducts">
-                  <a className="px-4 py-5 ml-4 font-semibold transition rounded-md bg-info text-primary hover:bg-primary hover:text-info focus:outline-none focus:ring-4 focus:ring-primaryfocus:ring-opacity-50">
+                  <a className="px-4 py-5 ml-4 font-extrabold transition rounded-md bg-info hover:bg-opacity-50 hover:bg-success hover:text-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary">
                     Agregar Producto
                   </a>
                 </Link>
@@ -161,7 +164,7 @@ const Layout = ({ children = null }) => {
                   <button
                     type="button"
                     onClick={openModal}
-                    className="px-4 py-5 ml-4 font-extrabold transition rounded-md bg-info hover:bg-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary hover:text-info"
+                    className="px-4 py-5 ml-4 font-extrabold transition rounded-md bg-info hover:bg-opacity-50 hover:bg-success hover:text-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary"
                   >
                     Login
                   </button>

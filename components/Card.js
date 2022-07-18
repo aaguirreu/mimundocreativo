@@ -7,7 +7,6 @@ const Card = ({
   id = "",
   image = "",
   title = "",
-  status = "",
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
@@ -46,7 +45,7 @@ const Card = ({
           <h2 className="card-title">
             {" "}
             <div className="inline-flex justify-center w-full mt-2 space-x-4">
-              <span className="font-semibold text-title">
+              <span className="font-semibold text-accent">
                 {title ?? ""}
               </span>
 
@@ -59,9 +58,9 @@ const Card = ({
           <h2 className="card-title">
           <div className="inline-flex justify-center w-full mt-2 space-x-4">
             <div>
-              <span className="text-white-500">Desde</span>
+              <span className="text-accent">Desde</span>
             </div>
-            <span className="shrink-0 text-info">
+            <span className="shrink-0 text-secondary">
               <span className="text-white-500">$</span>
                 {new Intl.NumberFormat("de-DE", {
                   maximumFractionDigits: 0,
@@ -91,10 +90,6 @@ Card.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  status: PropTypes.string,
-  authenticity: PropTypes.number,
-  returnPolicy: PropTypes.number,
-  warranty: PropTypes.number,
   price: PropTypes.number,
   favorite: PropTypes.bool,
   onClickFavorite: PropTypes.func,

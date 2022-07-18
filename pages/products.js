@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function getServerSideProps() {
-  const products = await prisma.product.findMany();
+  const products = await prisma.productos.findMany();
   return {
     props: {
       products: JSON.parse(JSON.stringify(products)),

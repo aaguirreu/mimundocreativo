@@ -6,9 +6,9 @@
 
 .text-gray-600 {
     --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
+    color: rgb(0, 0, 0);
 }
-
+/*
 .text-primary {
     --tw-text-opacity: 1;
     color: white;
@@ -21,28 +21,47 @@
 
 .text-title {
     --tw-bg-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
+    color: rgb(243, 243, 243);
+}*/
+
+@media (min-width: 1536px) {
+.container {
+  max-width: 1934px;
+}
 }
 
-.text-success{
-    color: #ffcaca;
-    
+.aspect-video {
+    aspect-ratio: 10/9;
+  }
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: #FF869E;
+}
+
+.text-gray-500 {
+    --tw-text-opacity: 1;
+    color: #FF869E;
+}
+
+button.btn.btn-info {
+    color: white;
 }
 
 a.px-4.py-5.ml-4.font-semibold.transition.rounded-md.bg-info.text-primary.hover\:bg-primary.hover\:text-info.focus\:outline-none.focus\:ring-4.focus\:ring-primaryfocus\:ring-opacity-50:hover {
-    background-color: #798fd7;
+    background-color: #ffb4c3;
     color: white;
 }
 
 button.px-4.py-5.ml-4.font-extrabold.transition.rounded-md.bg-info.hover\:bg-primary.focus\:outline-none.focus\:ring-4.focus\:ring-primary.focus\:ring-opacity-50.text-primary.hover\:text-info:hover {
-    background-color: #798fd7;
+    background-color: #ffb4c3;
     color: white;
 }
-
+/*
 input.w-full.shadow-sm.rounded-md.py-2.pl-4.truncate.border.focus\:outline-none.focus\:ring-4.focus\:ring-opacity-20.transition.disabled\:opacity-50.disabled\:cursor-not-allowed.border-gray-300.focus\:border-gray-400.focus\:ring-gray-400 {
     color: black;
 }
 
 textarea.w-full.shadow-sm.rounded-md.py-2.pl-4.truncate.border.focus\:outline-none.focus\:ring-4.focus\:ring-opacity-20.transition.disabled\:opacity-50.disabled\:cursor-not-allowed.border-gray-300.focus\:border-gray-400.focus\:ring-gray-400 {
     color: black;
-}
+}*/

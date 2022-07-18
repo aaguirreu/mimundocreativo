@@ -10,17 +10,12 @@ datasource db {
   url= env("DATABASE_URL")
 }
 
-
-model Product {
+model productos {
   id          String   @id @default(cuid())
-  image       String?
-  title       String?
-  description String?
-  status      String?
-  price       Float?
-  authenticity Int?
-  returnPolicy Int?
-  warranty     Int?
   createdAt   DateTime @default(now())
+  title       String?
+  image       String?
+  description String?
+  price       Float?
   updatedAt   DateTime @updatedAt
 }

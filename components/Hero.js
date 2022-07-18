@@ -1,9 +1,8 @@
 import React from "react";
-import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Shopsvg from "../public/assets/shop.svg";
+import Shopsvg from "../public/assets/cactus.png";
 
 const Hero = () => {
   return (
@@ -12,15 +11,13 @@ const Hero = () => {
         <div className="w-5/6 max-w-xs mx-auto space-y-10 text-center lg:max-w-md md:w-full md:text-left">
           <h1 className="text-3xl font-extrabold text-white font-primary sm:text-4xl md:text-5xl md:leading-tight">
             Personaliza <span className="text-success">agendas, </span>stickers, {" "}
-            <span className="text-success">decoración, </span>encintados, ,{" "}
+            <span className="text-success">decoración, </span>encintados, {" "}
             <span className="text-success">estampados, </span> y más...{" "}
           </h1>
           <p className="text-base text-gray-500 font-secondary md:text-lg lg:text-xl">
             Busca eso que deseas en nuestra tienda!
           </p>
           <div className="flex space-x-4">
-            <PrimaryButton text="Register" link="/" />
-            <SecondaryButton text="ir a Tienda!" link="/products" />
           </div>
         </div>
       </div>
