@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url= env("DATABASE_API_URL")
+  url= env("DATABASE_URL")
 }
 
 
