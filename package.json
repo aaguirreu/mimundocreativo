@@ -1,0 +1,43 @@
+{
+  "name": "supa-vacation",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
+    "@prisma/client": "^3.15.2",
+    "@supabase/supabase-js": "^1.32.2",
+    "@svgr/webpack": "^6.2.1",
+    "@tailwindcss/forms": "^0.4.0",
+    "all": "^0.0.0",
+    "autoprefixer": "^10.4.2",
+    "axios": "^0.27.2",
+    "base64-arraybuffer": "^1.0.2",
+    "classnames": "^2.3.1",
+    "daisyui": "^2.6.0",
+    "dotenv": "^16.0.0",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.2.8",
+    "nanoid": "^4.0.0",
+    "next": "12.0.10",
+    "next-absolute-url": "^1.2.2",
+    "next-images": "^1.8.4",
+    "postcss": "^8.4.6",
+    "prisma": "^3.15.2",
+    "prop-types": "^15.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hot-toast": "^2.2.0",
+    "tailwindcss": "^3.0.23",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10"
+  }
+}
