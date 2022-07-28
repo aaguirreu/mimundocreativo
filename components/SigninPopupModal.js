@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useContext, createContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -6,75 +6,23 @@ import { toast } from "react-hot-toast";
 import { Dialog, Transition } from "@headlessui/react";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
+//import login from "../pages/api/login"
 import {
   SparklesIcon,
   MailOpenIcon,
   XIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-import { createClient } from "@supabase/supabase-js";
-/*
-const supabase = createClient(
-  process.env.SUPABASE_API_URL,
-  process.env.SUPABASE_API_KEY
-);*/
+import { signIn } from "next-auth/react";
 
-const Confirm = ({ show = false, email = "", }) => (
-  <Transition appear show={show} as={Fragment}>
-    <div className="fixed inset-0 z-50">
-      <Transition.Child
-        as={Fragment}
-        enter="ease-out duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="ease-in duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className="fixed inset-0 bg-white" />
-      </Transition.Child>
 
-      <Transition.Child
-        as={Fragment}
-        enter="ease-out duration-300"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100 scale-100"
-        leave="ease-in duration-200"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
-      >
-        <div className="flex items-center justify-center h-full p-8">
-          <div className="overflow-hidden transition-all transform">
-            <h3 className="text-lg font-medium leading-6 text-center">
-              <div className="flex flex-col items-center justify-center space-y-4">
-                <MailOpenIcon className="w-12 h-12 text-teal-500 shrink-0" />
-              </div>
-              <p className="mt-2 text-2xl font-semibold">Confirm your email</p>
-            </h3>
-
-            <p className="mt-4 text-lg text-center">
-              We have sed and email to <strong>{email ?? ""}</strong>.
-              <br />
-              Check your email and click on that confirmation link.
-            </p>
-          </div>
-        </div>
-      </Transition.Child>
-    </div>
-  </Transition>
-);
-
-const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Iniciar sesión", initialValues = null, onSubmit = () => null, redirectPath = "",}) => {
+const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Iniciar sesión", initialValues = null, onSubmit = () => null, redirectPath = ""}) => {
   const [disabled, setDisabled] = useState(false);
   const [showConfirm, setConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
 
-  const [emailAdmin, setEmail] = useState(initialValues?.email ?? "");
-  const [passwordAdmin, setPassword] = useState(initialValues?.password ?? "");
-  const { cuenta, ...initialFormValues } = initialValues ?? {
-    email: "",
-    password: "",
-  };
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   const closeModal = () => {
     if (typeof onClose === "function") {
@@ -96,23 +44,29 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
   useEffect(() => {
     toast.dismiss();
   }, []);
-
+  
   const handleOnSubmit = async (values = null) => {
     let toastId;
 
     try {
       setDisabled(true);
       toastId = toast.loading("Ingresando...");
-      const { user, error } = await supabase.auth.signIn({
-        email: values.email,
-        password: values.password,
-      })
       if (typeof onSubmit === "function") {
         await onSubmit({...values})
-      }
-      toast.success("Ingresado con éxito", { id: toastId });
-      if (redirectPath) {
-        router.push(redirectPath);
+        //if (values.email === process.env.EMAIL_ADMIN  && values.password === process.env.PASSWORD_ADMIN){ 
+        //if (values.email === "ola"  && values.password === "ola") {
+            console.log(`${values.emai} ${values.password}`)
+            signIn()
+            setShowSignIn(true)
+            setSubmitted(true)
+          if (redirectPath) {
+            router.push(redirectPath);
+          }
+          toast.success("Ingresado con éxito", { id: toastId });
+        /*} else {
+          toast.error("No se ha podido ingresar", { id: toastId });
+          setDisabled(false);
+        }*/
       }
     } catch (e) {
       toast.error("No se ha podido ingresar", { id: toastId });
@@ -180,7 +134,7 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
                     as="h3"
                     className="mt-6 text-lg font-bold text-center sm:text-2xl text-secondary"
                   >
-                    {showSignIn ? "Welcome back!" : "Acceder"}
+                    {showSignIn ? "¡Hola nuevamente!" : "Acceder"}
                   </Dialog.Title>
                   {!showSignIn ? (
                     <Dialog.Description className="mt-2 text-base text-center text-gray-500">
@@ -213,7 +167,7 @@ const SigninPopupModal = ({ show = false, onClose = () => null, buttonText="Inic
                             <button
                               type="submit"
                               disabled={disabled || !isValid}
-                              className="px-6 py-2 text-white transition rounded-md bg-success focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+                              className="btn btn-info"
                               >
                               {isSubmitting ? "Accediendo..." : buttonText}
                             </button>

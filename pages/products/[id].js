@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Layout from "@/components/Layout";
-import { PrismaClient } from "@prisma/client";
+import prisma from '@/components/prisma'
 const prisma = new PrismaClient();
 import { useRouter } from "next/router";
 
@@ -30,8 +30,8 @@ const ListedProducts = (productos = null) => {
 
   return (
     <Layout>
-      <div className="max-w-screen-lg mx-auto">
-        <div className="relative mt-6 overflow-hidden bg-gray-400 rounded-lg shadow-md aspect-video">
+      <div className="max-w-screen-lg mx-auto overflow-auto">
+        <div className="float-left mt-6 overflow-hidden bg-gray-400 rounded-lg shadow-md image-page">
           {productos?.image ? (
             <Image
               src={productos.image}
@@ -41,7 +41,7 @@ const ListedProducts = (productos = null) => {
             />
           ) : null}
         </div>
-        <div className="flex flex-col pt-10 space-y-4 sm:flex-row sm:justify-between sm:space-x-4">
+        <div className="flex flex-col float-right pt-10 space-y-4 title-page sm:flex-row sm:justify-between sm:space-x-4">
           <div>
             <h1 className="text-2xl font-semibold truncate">
               {productos?.title ?? ""}

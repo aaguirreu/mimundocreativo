@@ -2,7 +2,7 @@ import React from "react";
 import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Shopsvg from "../public/assets/cactus.png";
+import cactus from "../public/assets/cactus.png";
 
 const Hero = () => {
   return (
@@ -29,7 +29,7 @@ const Hero = () => {
       >
         <Image
           alt="hero-img"
-          src={Shopsvg}
+          src={cactus}
           className="object-cover w-full mx-auto shadow rounded-tr-extraLarge rounded-bl-extraLarge h-96 sm:h-112 md:h-120"
         />
       </motion.div>

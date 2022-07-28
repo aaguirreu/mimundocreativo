@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import { HeartIcon } from "@heroicons/react/solid";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cart.slice';
 
 const Card = ({
   id = "",
@@ -10,8 +12,8 @@ const Card = ({
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
+  dispatch = useDispatch(),
 }) => (
-  <Link href={`/products/${id}`}>
     <a className="block w-full p-5">
       <div className="w-full shadow-xl card card-compact bg-neutral">
         <div className="relative overflow-hidden rounded-lg shadow bg-photo aspect-video">
@@ -48,12 +50,8 @@ const Card = ({
               <span className="font-semibold text-accent">
                 {title ?? ""}
               </span>
-
             </div>
-          
           </h2>
-          
-          <p></p>
           <p>
           <h2 className="card-title">
           <div className="inline-flex justify-center w-full mt-2 space-x-4">
@@ -71,18 +69,15 @@ const Card = ({
               </span>
             </div>
           </h2>
-          
-
             <div className="justify-center pt-2 card-actions">
             </div>
           </p>
         </div>
         <div className="justify-center p-6 card-actions">
-          <button className="btn btn-info">Buy Now</button>
+          <button onClick={() => dispatch(addToCart(title))} className="btn btn-info">Añadir al carrito</button>
         </div>
       </div>
     </a>
-  </Link>
 );
 
 Card.propTypes = {

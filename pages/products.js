@@ -1,9 +1,7 @@
 // pages/products.js
 import Layout from "@/components/Layout";
 import Grid from "@/components/Grid";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from '@/components/prisma'
 
 export async function getServerSideProps() {
   const products = await prisma.productos.findMany();

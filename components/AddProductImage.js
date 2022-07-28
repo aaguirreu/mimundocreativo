@@ -131,3 +131,4 @@ export async function getInitialProps({ req }) {
   const host = absoluteUrl(req, req.headers.host);
   console.log("Requested URL ->", host.origin);
 }
+

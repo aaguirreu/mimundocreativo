@@ -2,11 +2,7 @@ import { nanoid } from "nanoid";
 import { decode } from "base64-arraybuffer";
 import { createClient } from "@supabase/supabase-js";
 import absoluteUrl from "next-absolute-url";
-
-const supabase = createClient(
-  process.env.SUPABASE_API_URL,
-  process.env.SUPABASE_API_KEY
-);
+import supabase from '../../client'
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

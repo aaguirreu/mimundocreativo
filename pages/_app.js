@@ -1,11 +1,18 @@
 import "../styles/globals.css";
 import { Toaster } from "react-hot-toast";
+import { Provider } from 'react-redux';  
+import store from '../redux/store'; 
+import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
-      <Component {...pageProps} />
-      <Toaster />
+    <SessionProvider session={session}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+        <Toaster />
+      </Provider>
+    </SessionProvider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,7 +7,8 @@ import PropTypes from "prop-types";
 import SigninPopupModal from "./SigninPopupModal";
 import { Menu, Transition } from "@headlessui/react";
 import SecondaryButton from "@/components/SecondaryButton";
-
+import NavItem from "@/components/navItems";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 import {
   HeartIcon,
@@ -17,7 +18,6 @@ import {
   UserIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 
 const menuItems = [
   {
@@ -42,16 +42,25 @@ const menuItems = [
   },
 ];
 
+
 const Layout = ({ children = null }) => {
+  const { data: session } = useSession()
+
+  if (session && session.user.role === "admin") {
   const router = useRouter();
 
   const [showModal, setShowModal] = useState(false);
-
-  const user = null;
-  const isLoadingUser = false;
   
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+  const [navActive, setNavActive] = useState(null);
+  const [activeIdx, setActiveIdx] = useState(-1);
+
+  const MENU_LIST = [
+    { text: "Tienda", href: "/products" },
+    { text: "Carrito", href: "/cart" },
+    { text: "Añadir producto", href: "/addProducts" },
+  ];
 
   return (
     <>
@@ -62,120 +71,69 @@ const Layout = ({ children = null }) => {
       </Head>
 
       <div className="min-h-screen flex flex-col font-['Poppins'] bg-[linear-gradient(90deg, #161122 21px, transparent 1%) center, linear-gradient(#161122 21px, transparent 1%) center, #a799cc]">
-        <header className="w-full shadow-lg h-28">
+        <header className="static top-0 z-30 w-full h-16 shadow-lg md:h-28">
+        
           <div className="container h-full mx-auto">
-            <div className="flex items-center justify-between h-full px-5 space-x-5">
+            
+            <div className="flex items-center justify-between h-full px-5 space-x-5 md:static">
               <Link href="/">
                 <a className="flex items-center space-x-1">
                   <span className="text-2xl font-semibold tracking-wide text-white">
-                    <span className="text-3xl text-success">M</span>i
-                    <span className="text-3xl text-success">M</span>undo
-                    <span className="text-3xl text-success">C</span>reativo
+                    <span className="text-3xl text-success">MiMundoCreativo</span>
+
                   </span>
                 </a>
               </Link>
-              <div className="flex items-center space-x-4">
-              <SecondaryButton text="Tienda" link="/products" />
-                <Link href="/addProducts">
-                  <a className="px-4 py-5 ml-4 font-extrabold transition rounded-md bg-info hover:bg-opacity-50 hover:bg-success hover:text-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary">
-                    Agregar Producto
-                  </a>
-                </Link>
-                {isLoadingUser ? (
-                  <div className="h-8 w-[75px] bg-gray-200 animate-pulse rounded-md" />
-                ) : user ? (
-                  <Menu as="div" className="relative z-50">
-                    <Menu.Button className="flex items-center space-x-px group">
-                      <div className="relative flex items-center justify-center overflow-hidden bg-gray-200 rounded-full shrink-0 w-9 h-9">
-                        {user?.image ? (
-                          <Image
-                            src={user?.image}
-                            alt={user?.name || "Avatar"}
-                            layout="fill"
-                          />
-                        ) : (
-                          <UserIcon className="w-6 h-6 text-gray-400" />
-                        )}
-                      </div>
-                      <ChevronDownIcon className="w-5 h-5 text-gray-500 shrink-0 group-hover:text-current" />
-                    </Menu.Button>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="opacity-0 scale-95"
-                      enterTo="opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="opacity-100 scale-100"
-                      leaveTo="opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 mt-1 overflow-hidden origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg w-72 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="flex items-center px-4 py-4 mb-2 space-x-2">
-                          <div className="relative flex items-center justify-center overflow-hidden bg-gray-200 rounded-full shrink-0 w-9 h-9">
-                            {user?.image ? (
-                              <Image
-                                src={user?.image}
-                                alt={user?.name || "Avatar"}
-                                layout="fill"
-                              />
-                            ) : (
-                              <UserIcon className="w-6 h-6 text-gray-400" />
-                            )}
-                          </div>
-                          <div className="flex flex-col truncate">
-                            <span>{user?.name}</span>
-                            <span className="text-sm text-gray-500">
-                              {user?.email}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="py-2">
-                          {menuItems.map(
-                            ({ label, href, onClick, icon: Icon }) => (
-                              <div
-                                key={label}
-                                className="px-2 last:border-t last:pt-2 last:mt-2"
-                              >
-                                <Menu.Item>
-                                  {href ? (
-                                    <Link href={href}>
-                                      <a className="flex items-center px-4 py-2 space-x-2 rounded-md hover:bg-gray-100">
-                                        <Icon className="w-5 h-5 text-gray-500 shrink-0" />
-                                        <span>{label}</span>
-                                      </a>
-                                    </Link>
-                                  ) : (
-                                    <button
-                                      className="flex items-center w-full px-4 py-2 space-x-2 rounded-md hover:bg-gray-100"
-                                      onClick={onClick}
-                                    >
-                                      <Icon className="w-5 h-5 text-gray-500 shrink-0" />
-                                      <span>{label}</span>
-                                    </button>
-                                  )}
-                                </Menu.Item>
-                              </div>
-                            )
-                          )}
-                        </div>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={openModal}
-                    className="px-4 py-5 ml-4 font-extrabold transition rounded-md bg-info hover:bg-opacity-50 hover:bg-success hover:text-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary"
-                  >
-                    Login
-                  </button>
-                )}
-              </div>
+
+              <nav
+        className={`nav ${
+          navActive ? "active" : ""
+        }
+        `}
+      >
+        <div
+          className={`md:hidden active menu__icon ${
+            navActive ? "active" : "inactive"
+          }`}
+          onClick={() => setNavActive(!navActive)}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`menu ${navActive ? "active" : ""}`}>
+        <button className="p-2 text-2xl tracking-wide text-success">
+            <h1>{session.user.name.split(" ", 1)}</h1>
+          </button>
+          {MENU_LIST.map((menu, idx) => (
+            <button className="p-2 text-2xl font-semibold tracking-wide text-success"
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+              }}
+              key={menu.href}
+            >
+              
+              <NavItem {...menu} active={idx === activeIdx} />
+            </button>
+            
+          ))}
+          
+          <button className="p-2 text-2xl font-semibold tracking-wide text-success" 
+          onClick={signOut}>
+            Salir
+          </button>
+          
+        </div>
+      </nav>
             </div>
+
+          <script type="text/javascript" src="navi.js"></script>
           </div>
         </header>
-
+              
         <main className="container flex-grow mx-auto">
-          <div className="px-4 py-12">
+          <div className="px-2">
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
@@ -183,8 +141,102 @@ const Layout = ({ children = null }) => {
       </div>
     </>
   );
-};
+} else {
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+  const [navActive, setNavActive] = useState(null);
+  const [activeIdx, setActiveIdx] = useState(-1);
 
+  const MENU_LIST = [
+    { text: "Tienda", href: "/products" },
+    { text: "Carrito", href: "/cart" },
+  ];
+
+  return ( !session? <a/> :
+    <>
+      <Head>
+        <title>Mi Mundo Creativo</title>
+        <meta name="title" content="SupaaShopp" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="min-h-screen flex flex-col font-['Poppins'] bg-[linear-gradient(90deg, #161122 21px, transparent 1%) center, linear-gradient(#161122 21px, transparent 1%) center, #a799cc]">
+        <header className="static top-0 z-30 w-full h-16 shadow-lg md:h-28">
+        
+          <div className="container h-full mx-auto">
+            
+            <div className="flex items-center justify-between h-full px-5 space-x-5 md:static">
+              <Link href="/">
+                <a className="flex items-center space-x-1">
+                  <span className="text-2xl font-semibold tracking-wide text-white">
+                    <span className="text-3xl text-success">MiMundoCreativo</span>
+
+                  </span>
+                </a>
+              </Link>
+
+              <nav
+        className={`nav ${
+          navActive ? "active" : ""
+        }
+        `}
+      >
+        <div
+          className={`md:hidden active menu__icon ${
+            navActive ? "active" : "inactive"
+          }`}
+          onClick={() => setNavActive(!navActive)}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        
+        <div className={`menu ${navActive ? "active" : ""}`}>
+        {session ? <button className="p-2 text-2xl tracking-wide text-success">
+            <h1>{session.user.name.split(" ", 1)}</h1>
+          </button> : null}
+          {MENU_LIST.map((menu, idx) => (
+            <button className="p-2 text-2xl font-semibold tracking-wide text-success"
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+              }}
+              key={menu.href}
+            >
+              
+              <NavItem {...menu} active={idx === activeIdx} />
+            </button>
+            
+          ))}
+          <button className="p-2 text-2xl font-semibold tracking-wide text-success" 
+          //onClick={openModal}>
+          //onClick={() => signIn()}>
+          onClick={session ? signOut : signIn}>
+            {session ? "Salir" : "Acceder"}
+          </button>
+        </div>
+      </nav>
+            </div>
+
+          <script type="text/javascript" src="navi.js"></script>
+          </div>
+        </header>
+              
+        <main className="container flex-grow mx-auto">
+          <div className="px-2">
+            {typeof children === "function" ? children(openModal) : children}
+          </div>
+        </main>
+        <SigninPopupModal show={showModal} onClose={closeModal} />
+      </div>
+    </>
+  );
+}
+};
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
