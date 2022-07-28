@@ -45,16 +45,17 @@ const menuItems = [
 
 const Layout = ({ children = null }) => {
   const { data: session } = useSession()
-
-  if (session && session.user.role === "admin") {
-  const router = useRouter();
-
   const [showModal, setShowModal] = useState(false);
   
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
+  
+  if (session && session.user.role === "admin") {
+  const router = useRouter();
+
+  
 
   const MENU_LIST = [
     { text: "Tienda", href: "/products" },
@@ -142,13 +143,6 @@ const Layout = ({ children = null }) => {
     </>
   );
 } else {
-  const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
-  
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
-  const [navActive, setNavActive] = useState(null);
-  const [activeIdx, setActiveIdx] = useState(-1);
 
   const MENU_LIST = [
     { text: "Tienda", href: "/products" },
