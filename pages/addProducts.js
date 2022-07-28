@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/Loading.module.css"
 
-const addProducts = ({ Component, pageProps }) => {
+const addProducts = () => {
   const createProduct = (data) => axios.post("/api/products", data);
   const { data: session } = useSession()
   const router = useRouter();
