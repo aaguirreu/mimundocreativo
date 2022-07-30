@@ -13,7 +13,7 @@ export default function Cart() {
       removeItem,
     } = useCart();
 
-    if (isEmpty) return <Layout><p>Tu carrito está vacío</p></Layout>
+    if (isEmpty) return <Layout><p className="font-semibold text-warning">Tu carrito está vacío</p></Layout>
     return (
       <>
       <Layout>
