@@ -51,12 +51,9 @@ const Layout = ({ children = null }) => {
   const closeModal = () => setShowModal(false);
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-  
-  if (session && session.user.role === "admin") {
   const router = useRouter();
 
-  
-
+  if (session && session.user.role === "admin") {
   const MENU_LIST = [
     { text: "Tienda", href: "/products" },
     { text: "Carrito", href: "/cart" },
@@ -124,12 +121,9 @@ const Layout = ({ children = null }) => {
           onClick={signOut}>
             Salir
           </button>
-          
         </div>
       </nav>
             </div>
-
-          <script type="text/javascript" src="navi.js"></script>
           </div>
         </header>
               
@@ -138,7 +132,6 @@ const Layout = ({ children = null }) => {
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
-        <SigninPopupModal show={showModal} onClose={closeModal} />
       </div>
     </>
   );
@@ -216,7 +209,6 @@ const Layout = ({ children = null }) => {
       </nav>
             </div>
 
-          <script type="text/javascript" src="navi.js"></script>
           </div>
         </header>
               
@@ -225,7 +217,6 @@ const Layout = ({ children = null }) => {
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
-        <SigninPopupModal show={showModal} onClose={closeModal} />
       </div>
     </>
   );

@@ -12,8 +12,7 @@ const Card = ({
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
-  dispatch = useDispatch(),
-}) => (
+}) => {dispatch = useDispatch()(
     <a className="block w-full p-5">
       <div className="w-full shadow-xl card card-compact bg-neutral">
         <div className="relative overflow-hidden rounded-lg shadow bg-photo aspect-video">
@@ -78,7 +77,7 @@ const Card = ({
         </div>
       </div>
     </a>
-);
+)};
 
 Card.propTypes = {
   id: PropTypes.string.isRequired,
