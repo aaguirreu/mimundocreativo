@@ -9,7 +9,6 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          //primary: "#9bf2d3",
           primary: "white",
           secondary: "#d33d53",
           accent: "#f35070",
@@ -17,7 +16,7 @@ module.exports = {
           "base-100": "#FFE6E6",
           info: "#FF869E",
           success: "#FF869E",
-          warning: "#DDAE03",
+          warning: "#f95c84",
           error: "#E87C69",
           "holo-100":
             "radial-gradient(hsla((220 13% 69%)/.2) 0.5px,hsla((220 17% 17%)/1) 0.5px)",

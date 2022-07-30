@@ -1,8 +1,7 @@
 import { nanoid } from "nanoid";
 import { decode } from "base64-arraybuffer";
-import { createClient } from "@supabase/supabase-js";
 import absoluteUrl from "next-absolute-url";
-import supabase from '../../client'
+import {supabase} from "./supabase"
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

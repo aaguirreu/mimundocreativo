@@ -3,7 +3,9 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import { HeartIcon } from "@heroicons/react/solid";
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cart.slice';
+import { addToCart, addToCache } from '../redux/cart.slice';
+import { useCallback } from "react";
+import { useCart } from "react-use-cart";
 
 const Card = ({
   id = "",
@@ -12,7 +14,10 @@ const Card = ({
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
-}) => {dispatch = useDispatch()(
+  product = {id: id, image: image, title: title, price: price}
+}) =>  {const { addItem } = useCart()
+
+  return (
     <a className="block w-full p-5">
       <div className="w-full shadow-xl card card-compact bg-neutral">
         <div className="relative overflow-hidden rounded-lg shadow bg-photo aspect-video">
@@ -73,12 +78,12 @@ const Card = ({
           </p>
         </div>
         <div className="justify-center p-6 card-actions">
-          <button onClick={() => dispatch(addToCart(title))} className="btn btn-info">Añadir al carrito</button>
+          <button onClick={() => addItem(product)} className="btn btn-info">Añadir al carrito</button>
         </div>
       </div>
     </a>
-)};
-
+)
+}
 Card.propTypes = {
   id: PropTypes.string.isRequired,
   image: PropTypes.string,

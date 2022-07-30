@@ -3,11 +3,14 @@
     text-align: center;
   }
   .header {
+    color: #FF869E;
+    font-weight: 600;
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
   }
   .header div {
+    color: #FF869E;
     flex: 1;
     text-align: center;
     font-size: 1rem;
@@ -16,6 +19,7 @@
     text-transform: uppercase;
     border-bottom: 2px solid black;
     margin-bottom: 2rem;
+    font-weight: 600;
   }
   .body {
     display: flex;
@@ -25,6 +29,8 @@
     margin-bottom: 1rem;
   }
   .body > * {
+    font-weight: 600;
+    color: #f95c84;
     flex: 1;
   }
   .image {
@@ -33,9 +39,10 @@
   .buttons > * {
     width: 25px;
     height: 30px;
-    background-color: black;
+    background-color: #ff859d;
     color: white;
-    border: none;
     margin: 0.5rem;
     font-size: 1rem;
+    border-radius: var(--rounded-btn, 0.5rem);
   }
+ 

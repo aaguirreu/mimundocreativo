@@ -3079,6 +3079,11 @@ mime-types@^2.1.12, mime-types@^2.1.27:
   dependencies:
     mime-db "1.52.0"
 
+mime@1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.5.tgz#9eed073022a8bf5e16c8566c6867b8832bfbfa13"
+  integrity sha512-QfwTOA+zRHSZXxl9Y7ue5ifKDhU1prnh0dO67Vgcl7Lcx0+79vL9A1ln0qtVur8CFSdYq5Zhnw9DDZQgwDh8Ng==
+
 mini-svg-data-uri@^1.2.3:
   version "1.4.3"
   resolved "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.3.tgz"
@@ -3182,6 +3187,14 @@ next@12.0.10:
     "@next/swc-win32-ia32-msvc" "12.0.10"
     "@next/swc-win32-x64-msvc" "12.0.10"
 
+nextjs-progressbar@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/nextjs-progressbar/-/nextjs-progressbar-0.0.14.tgz#cc2630ee4e9dec598314394bd0fffb0cbfc40444"
+  integrity sha512-AXYXHDN6M52AwFnGqH/vlwyo0gbC9zM7QS/4ryOTI0RUqfze5FJl8uSrxKJMzK6hGFdDeQXcZoWsLGXeCVtTwg==
+  dependencies:
+    nprogress "^0.2.0"
+    prop-types "^15.7.2"
+
 node-fetch@2.6.7:
   version "2.6.7"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
@@ -3208,6 +3221,11 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 nth-check@^2.0.1:
   version "2.1.1"
@@ -3312,6 +3330,13 @@ openid-client@^5.1.0:
     lru-cache "^6.0.0"
     object-hash "^2.0.1"
     oidc-token-hash "^5.0.1"
+
+optimist@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.3.1.tgz#6680d30560193af5a55eb64394883ed7bcb98f2e"
+  integrity sha512-SlvDwWll6UznuRvu5kxmlskndLf8GPbTFr75XYWkbmDdDL3HZWnsUqUbniXCpWlJnsIxJ5ZKKy0DOfL0i2RCRA==
+  dependencies:
+    wordwrap ">=0.0.1 <0.1.0"
 
 optionator@^0.9.1:
   version "0.9.1"
@@ -3502,6 +3527,11 @@ prisma@^3.15.2:
   dependencies:
     "@prisma/engines" "3.15.1-1.461d6a05159055555eb7dfb337c9fb271cbd4d7e"
 
+progress@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/progress/-/progress-0.0.4.tgz#dc20375e77236ba009c0ab5c6fa4f6d92f7408cf"
+  integrity sha512-D91pHw+l8w46yr1/UNAdjXRbDu4bKxR4DZQV3yosuX7osMR54SNewCfhg2LWqjb1Q1cCUSz0nJ15WDFG1w5BIQ==
+
 prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
@@ -3573,6 +3603,11 @@ react-redux@^8.0.2:
     hoist-non-react-statics "^3.3.2"
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
+
+react-use-cart@^1.13.0:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/react-use-cart/-/react-use-cart-1.13.0.tgz#af7f4306612bdb9c7563e59fbee299ee2f8fe278"
+  integrity sha512-V3jrNOgBXxTn/RWh1HCEdrQk/jx2xCixdkX1c7Vyl4zxEf9jOuniUnjZSTALO7rQ5226onqmvXxKz1eu0Yz6Iw==
 
 react@17.0.2:
   version "17.0.2"
@@ -3668,6 +3703,21 @@ regjsparser@^0.8.2:
   integrity sha512-J3LABycON/VNEu3abOviqGHuB/LOtOQj8SKmfP9anY5GfAVw/SPjwzSjxGjbZXIxbGfqTHtJw58C2Li/WkStmA==
   dependencies:
     jsesc "~0.5.0"
+
+req@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/req/-/req-0.1.4.tgz#d63eeb9b82b8ed148b84314d8a8d72921182cba4"
+  integrity sha512-5CyYTI61GMT89nePHyeblTaMWYiVhTxkJdix4qXbeor8RffiPB9qELEUHzzeFudlKeoSuDczomfKq11e/kyz+A==
+  dependencies:
+    mime "1.2.5"
+    optimist "0.3.1"
+    progress "0.0.4"
+    request "2.9.202"
+
+request@2.9.202:
+  version "2.9.202"
+  resolved "https://registry.yarnpkg.com/request/-/request-2.9.202.tgz#c61399cdfbbefda5dc48653b0e9bea517d9f8497"
+  integrity sha512-3tc+z/Mcu5Ux4WCZ2dh3F/h7EghvlTQNr0OeplFt09gOCbSZ8MZpHwWIjX/s6I8CsineNvUBGG4/QUNLSC9nKg==
 
 reselect@^4.1.5:
   version "4.1.6"
@@ -4158,6 +4208,11 @@ word-wrap@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+
+"wordwrap@>=0.0.1 <0.1.0":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+  integrity sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==
 
 wrappy@1:
   version "1.0.2"
