@@ -23,9 +23,9 @@ export default function Cart() {
               {item.image ? <div className="hidden float-left md:flex">
                 <Image src={item.image} height="144" width="144" objectFit="contain"/>
               </div> : <div></div>}
-              <div>
-                <p className="float-left pl-6 text-xl">{item.title}</p>
-                <p className="float-left pl-6">{item.description}</p>
+              <div className="float-left w-48 pl-6 text-xl h-36 md:w-2/3">
+                <h1 className="justify-start text-left">{item.title}</h1>
+                <p className="text-sm text-left text-accent">{item.description ?? ""}</p>
               </div>
               <button className="float-right hover:text-info" onClick={() => removeItem(item.id)}>
                 x

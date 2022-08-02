@@ -8,10 +8,11 @@ const Card = ({
   id = "",
   image = "",
   title = "",
+  description = "",
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
-  product = {id: id, image: image, title: title, price: price}
+  product = {id: id, image: image, title: title, price: price, description: description}
 }) =>  {const { addItem } = useCart()
 
   return (
@@ -52,10 +53,16 @@ const Card = ({
                 {title ?? ""}
               </span>
             </div>
+
           </h2>
+          <div>
+            <span className="inline-flex justify-center text-accent">
+                {description ?? ""}
+              </span>
+            </div>
           <p>
           <h2 className="card-title">
-          <div className="inline-flex justify-center w-full mt-2 space-x-4">
+          <div className="inline-flex justify-center w-full mt-2 tracking-wide">
             <div>
               <span className="text-accent">Desde</span>
             </div>
@@ -74,7 +81,7 @@ const Card = ({
             </div>
           </p>
         </div>
-        <div className="justify-center p-6 card-actions">
+        <div className="justify-center pb-6 card-actions">
           <button onClick={() => addItem(product)} className="btn btn-info">Añadir al carrito</button>
         </div>
       </div>
