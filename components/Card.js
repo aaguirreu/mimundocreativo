@@ -2,9 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import { HeartIcon } from "@heroicons/react/solid";
-import { useDispatch } from 'react-redux';
-import { addToCart, addToCache } from '../redux/cart.slice';
-import { useCallback } from "react";
 import { useCart } from "react-use-cart";
 
 const Card = ({

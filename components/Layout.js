@@ -2,10 +2,7 @@ import { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import PropTypes from "prop-types";
-import { Menu, Transition } from "@headlessui/react";
-import SecondaryButton from "@/components/SecondaryButton";
 import NavItem from "@/components/navItems";
 import { useSession, signIn, signOut } from "next-auth/react"
 

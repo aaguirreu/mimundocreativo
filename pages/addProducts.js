@@ -3,9 +3,6 @@ import ProductList from "@/components/ProductList";
 import axios from "axios";
 import { useSession } from "next-auth/react"
 import Error404 from "@/components/Error404";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import styles from "../styles/Loading.module.css"
 
 const AddProducts = () => {
   const createProduct = (data) => axios.post("/api/products", data);

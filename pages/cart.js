@@ -1,8 +1,6 @@
 import { CartProvider, useCart } from "react-use-cart";
 import Image from 'next/image';
 import Layout from '@/components/Layout';
-import styles from '../styles/CartPage.module.css';
-
 
 export default function Cart() {
     const {
@@ -17,48 +15,46 @@ export default function Cart() {
     return (
       <>
       <Layout>
-        <h1 className="font-semibold text-warning">Carrito ({totalUniqueItems})</h1>
-        <div className={styles.header}>
-              <div>Image</div>
-              <div>Product</div>
-              <div>Price</div>
-              <div>Quantity</div>
-              <div>Actions</div>
-              <div>Total Price</div>
-            </div>
+        <h1 className="font-semibold pt-7 text-warning">Carrito ({totalUniqueItems})</h1>
+  
         <ul>
           {items.map((item) => (
-            <div className={styles.body} key = {item.id}>
-            {item.image ? <div className={styles.image}>
-              <Image src={item.image} height="90" width="65" objectFit='contain'/>
-            </div> : <div></div>}
-            <p>{item.title}</p>
-            <p>$ {item.price}</p>
-            <p>{item.quantity}</p>
-            <div className={styles.buttons}>
-              <button onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
-                +
-              </button>
-              <button onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
-                -
-              </button>
-              <button onClick={() => removeItem(item.id)}>
+            <div className="w-auto h-40 p-2 my-5 font-semibold shadow-xl md:text-xl bg-neutral text-warning" key = {item.id}>
+              {item.image ? <div className="hidden float-left md:flex">
+                <Image src={item.image} height="144" width="144" objectFit="contain"/>
+              </div> : <div></div>}
+              <div>
+                <p className="float-left pl-6 text-xl">{item.title}</p>
+                <p className="float-left pl-6">{item.description}</p>
+              </div>
+              <button className="float-right hover:text-info" onClick={() => removeItem(item.id)}>
                 x
               </button>
+              <div className="items-center float-right pt-8 tracking-wide" >
+                <button className="content-center min-h-0 p-3 h-9 btn btn-info" onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
+                  +
+                </button>
+                <button className="p-5 text-justify btn-disabled text-warning">{item.quantity}</button>
+                <button className="content-center min-h-0 p-3 h-9 btn btn-info" onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
+                  -
+                </button>
+              <div className="">
+                <p >$ {new Intl.NumberFormat("de-DE", {
+                    maximumFractionDigits: 0,
+                    style: "decimal",
+                    currency: "USD",
+                  }).format(item.quantity * item.price)}{" "}
+                </p>
+              </div>
             </div>
-            <p>$ {new Intl.NumberFormat("de-DE", {
-                  maximumFractionDigits: 0,
-                  style: "decimal",
-                  currency: "USD",
-                }).format(item.quantity * item.price)}{" "}
-                 </p>
           </div>
           ))}
           <p className="font-semibold text-warning">Total $ {new Intl.NumberFormat("de-DE", {
                   maximumFractionDigits: 0,
                   style: "decimal",
                   currency: "USD",
-                }).format(items.length > 1 ? items.reduce((sum, value) => (sum.price * sum.quantity + value.price * value.quantity)) : items.map((item) => (item.quantity * item.price)) ?? 0)}{" "}
+                //}).format(items.length > 1 ? items.reduce((sum, value) => (sum.price * sum.quantity + value.price * value.quantity)) : items.map((item) => (item.quantity * item.price)) ?? 0)}{" "}
+                }).format(items.reduce((previousValue, currentValue) => previousValue + currentValue.quantity * currentValue.price, 0))}{" "}
                 </p>
          <div className="justify-center p-6 card-actions">
           <button className="btn btn-info">Comprar</button>
