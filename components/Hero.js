@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import cactus from "../public/assets/cactus.png";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -16,9 +17,9 @@ const Hero = () => {
           <p className="text-base text-gray-500 font-secondary md:text-lg lg:text-xl">
             Busca eso que deseas en nuestra
           </p>
-          <a href= "/products"className="items-center block text-base font-semibold text-gray-500 md:text-lg lg:text-xl">
+          <Link href= "/products"className="items-center block text-base font-semibold text-gray-500 md:text-lg lg:text-xl">
             tienda!
-          </a>
+          </Link>
           <div className="flex space-x-4">
           </div>
         </div>
