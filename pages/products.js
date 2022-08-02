@@ -15,7 +15,7 @@ export async function getServerSideProps() {
 export default function Products({ products = [] }) {
   return (
     <Layout>
-      <div className="p-5 mt-8">
+      <div className="p-5 mt-2">
         <Grid products={products} />
       </div>
     </Layout>

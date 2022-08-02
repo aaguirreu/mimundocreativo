@@ -17,11 +17,11 @@ const Hero = () => {
           <p className="text-base text-gray-500 font-secondary md:text-lg lg:text-xl">
             Busca eso que deseas en nuestra
           </p>
-          <Link href= "/products"className="items-center block text-base font-semibold text-gray-500 md:text-lg lg:text-xl">
-            tienda!
+          <Link href= "/products">
+            <a className="items-center block text-lg font-semibold text-gray-500 lg:text-xl">
+            tienda
+            </a>
           </Link>
-          <div className="flex space-x-4">
-          </div>
         </div>
       </div>
       <motion.div

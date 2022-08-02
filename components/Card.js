@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import { HeartIcon } from "@heroicons/react/solid";
@@ -16,7 +15,7 @@ const Card = ({
 }) =>  {const { addItem } = useCart()
 
   return (
-    <a className="block w-full p-5">
+    <a className="block w-full p-0">
       <div className="w-full shadow-xl card card-compact bg-neutral">
         <div className="relative overflow-hidden rounded-lg shadow bg-photo aspect-video">
           {image ? (
@@ -48,7 +47,7 @@ const Card = ({
         <div className="card-body">
           <h2 className="card-title">
             {" "}
-            <div className="inline-flex justify-center w-full mt-2 space-x-4">
+            <div className="inline-flex justify-center w-full space-x-4">
               <span className="font-semibold text-accent">
                 {title ?? ""}
               </span>
@@ -60,14 +59,11 @@ const Card = ({
                 {description ?? ""}
               </span>
             </div>
-          <p>
-          <h2 className="card-title">
-          <div className="inline-flex justify-center w-full mt-2 tracking-wide">
-            <div>
-              <span className="text-accent">Desde</span>
             </div>
-            <span className="shrink-0 text-secondary">
-              <span className="text-white-500">$</span>
+          <h2 className="card-title">
+          <div className="inline-flex justify-center w-full tracking-wide">
+              <span className="text-accent">Desde $</span>
+            <span className="shrink-0 text-accent">
                 {new Intl.NumberFormat("de-DE", {
                   maximumFractionDigits: 0,
                   style: "decimal",
@@ -77,10 +73,7 @@ const Card = ({
               </span>
             </div>
           </h2>
-            <div className="justify-center pt-2 card-actions">
-            </div>
-          </p>
-        </div>
+
         <div className="justify-center pb-6 card-actions">
           <button onClick={() => addItem(product)} className="btn btn-info">Añadir al carrito</button>
         </div>

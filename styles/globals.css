@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.card-compact .card-body {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1rem;
+}
+
 .card-body {
   display: flex;
   flex: 1 1 auto;
