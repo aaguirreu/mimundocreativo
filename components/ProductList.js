@@ -23,7 +23,7 @@ const ProductList = ({
   const router = useRouter();
 
   const [disabled, setDisabled] = useState(false);
-  const [imageUrl, setImageUrl] = useState(initialValues?.image ?? "https://nantzvpotusrljkqyhvd.supabase.in/storage/v1/object/public/supabase-ecommerce/BvsV-EEooEenmcbvHasA4.png");
+  const [imageUrl, setImageUrl] = useState(initialValues?.image ?? "");
 
   const upload = async (image) => {
     if (!image) return;
