@@ -53,11 +53,12 @@ export default function Cart() {
                   maximumFractionDigits: 0,
                   style: "decimal",
                   currency: "USD",
-                //}).format(items.length > 1 ? items.reduce((sum, value) => (sum.price * sum.quantity + value.price * value.quantity)) : items.map((item) => (item.quantity * item.price)) ?? 0)}{" "}
                 }).format(items.reduce((previousValue, currentValue) => previousValue + currentValue.quantity * currentValue.price, 0))}{" "}
-                </p>
+            </p>
          <div className="justify-center p-6 card-actions">
-          <button className="btn btn-info">Comprar</button>
+              <a className="btn btn-info" without rel="noreferrer" href={`https://wa.me/56940774310?text=${encodeURIComponent(`¡Hola *MiMundoCreativo*! Deseo comprar lo siguiente:\n\n${items.map((item, arr) => (arr = `_${item.quantity} ${item.title} $${item.price*item.quantity}_`))}\n\n*Total: $${items.reduce((previousValue, currentValue) => previousValue + currentValue.quantity * currentValue.price, 0)}*`).replace('%2C',"%0A")}`} target="_blank">
+                  <span className="text-primary">Comprar</span>
+              </a>
         </div>
         </ul>
         </Layout>
