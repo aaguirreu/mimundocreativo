@@ -10,6 +10,15 @@ module.exports = (phase, { defaultConfig }) => {
         "kagjkwomsitfugyxfvlj.supabase.co",
       ],
     },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+      if (!isServer) {
+        // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
+        config.resolve.fallback = {
+          'util/types': false
+        }
+      }
+      return config
+    },
 }
   return nextConfig
 }
