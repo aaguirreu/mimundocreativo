@@ -5,11 +5,17 @@ module.exports = (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
     images: {
-    domains: [
-      "kagjkwomsitfugyxfvlj.supabase.in",
-      "kagjkwomsitfugyxfvlj.supabase.co",
-    ],
-  },
-  }
+      domains: [
+        "kagjkwomsitfugyxfvlj.supabase.in",
+        "kagjkwomsitfugyxfvlj.supabase.co",
+      ],
+    },
+    webpack(config) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        './runtimeConfig': './runtimeConfig.browser',
+      }
+    },
+}
   return nextConfig
 }
