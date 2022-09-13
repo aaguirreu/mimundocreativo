@@ -10,11 +10,12 @@ module.exports = (phase, { defaultConfig }) => {
         "kagjkwomsitfugyxfvlj.supabase.co",
       ],
     },
-    webpack(config) {
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
       config.resolve.alias = {
         ...config.resolve.alias,
         './runtimeConfig': './runtimeConfig.browser',
       }
+      return config
     },
 }
   return nextConfig
