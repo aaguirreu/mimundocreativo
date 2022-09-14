@@ -18,6 +18,10 @@ module.exports = (phase, { defaultConfig }) => {
       config.experiments = {
         layers: true,
       };
+      config.gresolve.extensions = ['.js', '.jsx']
+      config.resolve.alias = {
+        Components: path.resolve(__dirname, '../src/components/'),
+      }
       return config;
   }
 }
