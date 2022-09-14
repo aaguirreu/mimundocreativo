@@ -19,7 +19,7 @@ module.exports = (phase, { defaultConfig }) => {
         layers: true,
       };
       config.resolve.alias = {
-        Components: path.resolve(__dirname, '../src/components/'),
+        Components: path.resolve(__dirname, '../components/'),
       }
       return config;
   }
