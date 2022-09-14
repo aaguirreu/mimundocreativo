@@ -15,7 +15,9 @@ module.exports = (phase, { defaultConfig }) => {
     },
     webpack: function (config, options) {
       console.log(options.webpack.version); // 5.18.0
-      config.experiments = {};
+      config.experiments = {
+        layers: true,
+      };
       return config;
   }
 }
